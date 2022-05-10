@@ -1,0 +1,26 @@
+.our-products{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    margin: auto;
+}
+.titel{
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+   
+}
+@media only screen and (max-width: 576px) {
+    .our-products{
+        
+        grid-template-columns: repeat(1, 1fr);
+        
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 990px) {
+    .our-products{
+        
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+}
