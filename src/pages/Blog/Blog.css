@@ -1,0 +1,12 @@
+.blog-aria{
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+.blog{
+    margin-top: 50px;
+}
+.blog h4{
+    color: red;
+    text-decoration: underline;
+}

@@ -1,6 +1,10 @@
-.footer-aria{
+.card-aria{
+    border: none;
+}
+.footer-copy-right{
     text-align: center;
+   padding: 20px;
+    background-color: #000;
     color: #fff;
-    background-color: black;
-    padding: 20px;
+    margin-top: 50px;
 }

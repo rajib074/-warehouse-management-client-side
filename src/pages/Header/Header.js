@@ -1,8 +1,16 @@
-import { Button } from "bootstrap";
+import { signOut } from "firebase/auth";
 import React from "react";
-import { Container, Form, FormControl, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
+import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
+
+  const handleSignOut = () => {
+    signOut(auth);
+  };
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -15,31 +23,43 @@ const Header = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
-              <NavDropdown title="Link" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="#" disabled>
-                Link
-              </Nav.Link>
+              <NavLink className="nav-link" to="/">
+                Home
+              </NavLink>
+              <NavLink className="nav-link" to="/our-products">
+                Our Products
+              </NavLink>
+              <NavLink className="nav-link" to="/blog">
+                Blog
+              </NavLink>
+              {user ? (
+                <>
+                  <NavLink className="nav-link" to="/additem">
+                    Add Item
+                  </NavLink>
+                  <NavLink className="nav-link" to="/myitem">
+                    My Item
+                  </NavLink>
+                </>
+              ) : (
+                ""
+              )}
             </Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              
-            </Form>
+            {user ? (
+              <button
+                onClick={handleSignOut}
+                className="btn btn-secondary d-none d-lg-block mt-0"
+              >
+                Sign Out
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="btn btn-secondary d-none d-lg-block mt-0"
+              >
+                Sign In
+              </Link>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

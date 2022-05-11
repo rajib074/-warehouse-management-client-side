@@ -1,33 +1,21 @@
 import React, { useEffect, useState } from "react";
+import useProduct from "../../Hooks/useProduct";
 import Product from "../Product/Product";
 import "./Products.css"
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const [products] = useProduct();
 
   return (
     <div>
       <h1 className="titel">Our Products</h1>
       <div className="our-products">
-        {products.map((product) => (
+        {
+        products.map((product) => (
           <Product key={product._id} product={product}></Product>
-        ))}
+        )).slice(0, 6)
+        }
       </div>
-
-      {/* <div className="container">
-        <h2 className="text-primary text-center mt-5">Our Products</h2>
-        <div className="row">
-          {products.map(product => (<Product></Product>
-            
-          ))}
-        </div>
-      </div> */}
     </div>
   );
 };
