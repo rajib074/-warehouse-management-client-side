@@ -1,36 +1,24 @@
 import React from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Placeholder } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 
 const AddItem = () => {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => console.log(data);
   return (
-    <div>
-      <Form className="w-50 m-auto">
-        <Form.Group className="hidden w-full lg:flex items-center text-sm leading-6 bg-slate-200 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm py-3 pl-3 pr-3 hover:ring-slate-300 dark:bg-slate-800 dark:highlight-white/5 dark:hover:bg-slate-700">
-          <Form.Control type="email" placeholder="Enter email" />          
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="Name" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="Supplier" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="Quantity" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="Address" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="price" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="Image URL" />
-        </Form.Group>
-
-        <Button className="w-100" variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+    <div className="w-50 mx-auto">
+       <form className="d-flex flex-column" onSubmit={handleSubmit(onSubmit)}>
+      <input Placeholder='name' className='mb-2' {...register("name",)} />
+      <input Placeholder='img url' className='mb-2' {...register("img",)} />
+      <input Placeholder='email' className='mb-2' {...register("email",)} />
+      <input Placeholder='supplier' className='mb-2' {...register("supplier",)} />
+      <input Placeholder='price' className='mb-2' {...register("price",)} />
+      <input Placeholder='content' className='mb-2' {...register("content",)} />
+      <input Placeholder='price' className='mb-2' type="number" {...register("price")} />
+      <input Placeholder='quantity' className='mb-2' type="number" {...register("quantity")} />
+      <input Placeholder='sold' className='mb-2' type="number" {...register("sold")} />
+      <input type="submit" />
+    </form>
     </div>
   );
 };
