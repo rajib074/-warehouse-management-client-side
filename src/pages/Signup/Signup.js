@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import "./Signup.css";
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
-import { updateProfile } from "firebase/auth";
 import Loading from "../../Loading/Loading";
 import Google from "../Google/Google";
 

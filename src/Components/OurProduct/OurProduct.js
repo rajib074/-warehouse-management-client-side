@@ -1,7 +1,9 @@
 import React from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, NavLink, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import useProduct from "../../Hooks/useProduct";
 import Product from "../../pages/Product/Product";
+import "./OurProduct.css"
 
 const OurProduct = () => {
   const [products] = useProduct();
@@ -10,8 +12,12 @@ const OurProduct = () => {
       <Container>
         <Row>
           <Col>
-            <h1 className="title">Our Products</h1>
-            <Button className="btn btn-primary">Add Item</Button>
+           
+            <div className="add_item_btn">
+            <h1 className="text-danger m-2">Our Products</h1>
+            <Link to="/additem" className="btn btn-primary m-2">Add Item</Link>
+
+            </div>
             <div className="our-products">
               {products.map((product) => (
                 <Product key={product._id} product={product}></Product>

@@ -5,7 +5,7 @@ import "./Product.css"
 const Product = ({product}) => {
     const {_id, name, img, des} = product;
     const navigate = useNavigate();
-    const navigateToProductDitels = _id =>{
+    const navigateToProductDetails = _id =>{
         navigate(`/product/${_id}`)
     }
     return (
@@ -13,9 +13,9 @@ const Product = ({product}) => {
         <div className='product-aria'>
             <img src={img} alt=""/>
             <div>
-            <h1>this is servicw: {name}</h1>
+            <h1>{name}</h1>
             <p>ditels:{des}</p>
-            <button onClick={() => navigateToProductDitels(_id)} className='boking'>Boking</button>
+            <a onClick={() => navigateToProductDetails(_id)} className='boking'>Manage</a>
             </div>
             
         </div>

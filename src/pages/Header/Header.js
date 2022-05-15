@@ -12,7 +12,7 @@ const Header = () => {
     signOut(auth);
   };
   return (
-    <div>
+    <div className="container">
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#"></Navbar.Brand>
@@ -48,14 +48,14 @@ const Header = () => {
             {user ? (
               <button
                 onClick={handleSignOut}
-                className="btn btn-secondary d-none d-lg-block mt-0"
+                className="btn btn-danger"
               >
                 Sign Out
               </button>
             ) : (
               <Link
                 to="/login"
-                className="btn btn-secondary d-none d-lg-block mt-0"
+                className="btn btn-info"
               >
                 Sign In
               </Link>

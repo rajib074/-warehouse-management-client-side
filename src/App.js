@@ -12,7 +12,7 @@ import Login from './pages/Login/Login';
 import Blog from './pages/Blog/Blog';
 import AddItem from './pages/AddItem/AddItem';
 import OurProduct from './Components/OurProduct/OurProduct';
-import ProductDitels from './pages/ProductDitels/ProductDitels';
+import ProductDetails from './pages/ProductDitels/ProductDetails';
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/products" element={<Products></Products>}></Route>
         <Route path="/our-products" element={<OurProduct></OurProduct>}></Route>
-        <Route path="/product/:productId" element={<ProductDitels></ProductDitels>}></Route>
+        <Route path="/product/:productId" element={<ProductDetails></ProductDetails>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>.
         <Route path="/additem" element={<AddItem></AddItem>}></Route>.        
