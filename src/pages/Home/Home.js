@@ -9,6 +9,7 @@ const Home = () => {
             <Bennar></Bennar>
             <Products></Products>
             <UpComeing></UpComeing>
+            
         </div>
     );
 };
