@@ -14,6 +14,8 @@ import AddItem from './pages/AddItem/AddItem';
 import OurProduct from './Components/OurProduct/OurProduct';
 import ProductDetails from './pages/ProductDitels/ProductDetails';
 import Manage from './Components/Manage/Manage';
+import MyItem from './pages/MyItem/MyItem';
+import { ToastContainer } from 'react-bootstrap';
 
 
 function App() {
@@ -33,12 +35,13 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>.
         <Route path="/additem" element={<AddItem></AddItem>}></Route>        
         <Route path="/manage" element={<Manage></Manage>}></Route>        
+        <Route path="/my-item" element={<MyItem></MyItem>}></Route>        
         <Route path="/signup" element={<Signup></Signup>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="*" element={<NotFound></NotFound>} />
       </Routes>
       <Footer></Footer>
-      
+      <ToastContainer />
     </div>
   );
 }
