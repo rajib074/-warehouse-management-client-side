@@ -13,6 +13,7 @@ import Blog from './pages/Blog/Blog';
 import AddItem from './pages/AddItem/AddItem';
 import OurProduct from './Components/OurProduct/OurProduct';
 import ProductDetails from './pages/ProductDitels/ProductDetails';
+import Manage from './Components/Manage/Manage';
 
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetails></ProductDetails>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>.
-        <Route path="/additem" element={<AddItem></AddItem>}></Route>.        
+        <Route path="/additem" element={<AddItem></AddItem>}></Route>        
+        <Route path="/manage" element={<Manage></Manage>}></Route>        
         <Route path="/signup" element={<Signup></Signup>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="*" element={<NotFound></NotFound>} />
