@@ -14,6 +14,7 @@ const MyItem = () => {
   useEffect(() => {
     const getItems = async () => {
       const email = user.email;
+      console.log(email);
       const url = `http://localhost:5000/product?email=${email}`;
       const { data } = await axios.get(url);
       setProducts(data);

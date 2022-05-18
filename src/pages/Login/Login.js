@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Form } from "react-bootstrap";
 import {
   useSendPasswordResetEmail,
@@ -7,19 +7,22 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Google from "../Google/Google";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
+import axios from "axios";
 
 const Login = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
 
-  const [signInWithEmailAndPassword, user] =
+  const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+  let errorElement;
 
   const from = location.state?.from?.pathname || "/";
 
@@ -27,12 +30,28 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
-  const handleSubmit = (event) => {
+  if (error) {
+    toast.error(`${error?.message}`);
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    signInWithEmailAndPassword(email, password);
+    if (email || password) {
+      await signInWithEmailAndPassword(email, password);
+      const { data } = await axios.post("http://localhost:5000/login", { email });
+      console.log(data);
+      localStorage.setItem("accessToken", data.token);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      toast.success("Successfully Login");
+      setIsLoading(false);
+    } else {
+      toast.error("Please enter valid details");
+      setIsLoading(false);
+    }
   };
 
   const navigateSignup = (event) => {
@@ -81,6 +100,7 @@ const Login = () => {
           LOGIN
         </button>
       </Form>
+      {errorElement}
       <div className="login-google">
         <p>
           New to Genius Car?{" "}
@@ -94,7 +114,6 @@ const Login = () => {
         </p>
 
         <Google></Google>
-        <ToastContainer></ToastContainer>
       </div>
     </div>
   );

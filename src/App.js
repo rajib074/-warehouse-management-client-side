@@ -15,7 +15,8 @@ import OurProduct from './Components/OurProduct/OurProduct';
 import ProductDetails from './pages/ProductDitels/ProductDetails';
 import Manage from './Components/Manage/Manage';
 import MyItem from './pages/MyItem/MyItem';
-import { ToastContainer } from 'react-bootstrap';
+import RequireAuth from './pages/RequireAuth/RequireAuth';
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -30,12 +31,28 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/products" element={<Products></Products>}></Route>
         <Route path="/our-products" element={<OurProduct></OurProduct>}></Route>
-        <Route path="/product/:productId" element={<ProductDetails></ProductDetails>}></Route>
+        <Route path="/product/:productId" element={
+          <RequireAuth>
+            <ProductDetails></ProductDetails>
+          </RequireAuth>
+        }></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>.
-        <Route path="/additem" element={<AddItem></AddItem>}></Route>        
-        <Route path="/manage" element={<Manage></Manage>}></Route>        
-        <Route path="/my-item" element={<MyItem></MyItem>}></Route>        
+        <Route path="/additem" element={
+          <RequireAuth>
+            <AddItem></AddItem>
+          </RequireAuth>
+        }></Route>        
+        <Route path="/manage" element={
+          <RequireAuth>
+            <Manage></Manage>
+          </RequireAuth>
+        }></Route>        
+        <Route path="/my-item" element={
+          <RequireAuth>
+            <MyItem></MyItem>
+          </RequireAuth>
+        }></Route>        
         <Route path="/signup" element={<Signup></Signup>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="*" element={<NotFound></NotFound>} />
