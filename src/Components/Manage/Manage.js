@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useProduct from "../../Hooks/useProduct";
 import "./Manage.css";
 
@@ -31,6 +31,11 @@ const Manage = () => {
   return (
     <>
       <Container>
+        <Row>
+          <Col className="text-center my-4">
+            <Link to="/additem" className="btn btn-primary m-2">Add Item</Link>
+          </Col>
+        </Row>
         <Row>
           {products.map((product, index) => {
             return (

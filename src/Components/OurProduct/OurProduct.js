@@ -3,7 +3,7 @@ import { Button, Col, Container, NavLink, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useProduct from "../../Hooks/useProduct";
 import Product from "../../pages/Product/Product";
-import "./OurProduct.css"
+import "./OurProduct.css";
 
 const OurProduct = () => {
   const [products] = useProduct();
@@ -12,11 +12,8 @@ const OurProduct = () => {
       <Container>
         <Row>
           <Col>
-           
             <div className="add_item_btn">
-            <h1 className="text-danger m-2">Our Products</h1>
-            <Link to="/additem" className="btn btn-primary m-2">Add Item</Link>
-
+              <h1 className="text-danger m-2">Our Products</h1>
             </div>
             <div className="our-products">
               {products.map((product) => (
