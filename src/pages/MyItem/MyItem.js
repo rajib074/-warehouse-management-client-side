@@ -17,7 +17,7 @@ const MyItem = () => {
   useEffect(() => {
     const getItems = async () => {
       // console.log(email);
-      const url = `http://localhost:5000/product?email=${email}`;
+      const url = `https://rajib-enterprice.herokuapp.com/product?email=${email}`;
       const { data } = await axios.get(url);
       setProducts(data);
     };
@@ -29,7 +29,7 @@ const MyItem = () => {
       "Are you sure you want to delete this item?"
     );
     if (process) {
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://rajib-enterprice.herokuapp.com/product/${id}`;
       fetch(url, {
         method: "DELETE",
       })

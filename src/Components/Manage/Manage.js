@@ -13,7 +13,7 @@ const Manage = () => {
       "Are you sure you want to delete this item?"
     );
     if (process) {
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://rajib-enterprice.herokuapp.com/product/${id}`;
       fetch(url, {
         method: "DELETE",
       })

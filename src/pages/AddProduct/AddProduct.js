@@ -6,7 +6,7 @@ const AddProduct = () => {
     
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/service`;
+        const url = `https://rajib-enterprice.herokuapp.com/service`;
         fetch(url, {
             method: 'POST',
             headers: {

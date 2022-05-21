@@ -10,7 +10,7 @@ const ProductDetails = () => {
   const {_id, name, img, content, supplier, price, quantity, sold} = product;
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/${productId}`;
+    const url = `https://rajib-enterprice.herokuapp.com/product/${productId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
@@ -22,7 +22,7 @@ const ProductDetails = () => {
         let newSold = parseInt(sold) + 1;
         const newObject = { ...product, quantity: newQuantity, sold: newSold };
         setProduct(newObject);
-        fetch(`http://localhost:5000/update-quantity/${id}`, {
+        fetch(`https://rajib-enterprice.herokuapp.com/update-quantity/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const addOne = (id) => {
     let newQuantity = parseInt(quantity) + 1;
     const newObject = { ...product, quantity: newQuantity };
     setProduct(newObject);
-    fetch(`http://localhost:5000/update-quantity/${id}`, {
+    fetch(`https://rajib-enterprice.herokuapp.com/update-quantity/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

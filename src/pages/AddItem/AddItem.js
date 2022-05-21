@@ -8,7 +8,7 @@ const AddItem = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    const url = `http://localhost:5000/products`;
+    const url = `https://rajib-enterprice.herokuapp.com/products`;
     const newData = { ...data, sold: 0 };
     console.log(newData);
     fetch(url, {
