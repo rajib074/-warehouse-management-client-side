@@ -11,12 +11,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
 import axios from "axios";
+import { PropagateLoader } from "react-spinners";
 
 const Login = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
 
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -36,7 +36,6 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsLoading(true);
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
@@ -47,10 +46,8 @@ const Login = () => {
       localStorage.setItem("accessToken", data.token);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       toast.success("Successfully Login");
-      setIsLoading(false);
     } else {
       toast.error("Please enter valid details");
-      setIsLoading(false);
     }
   };
 
@@ -100,6 +97,7 @@ const Login = () => {
           LOGIN
         </button>
       </Form>
+      <PropagateLoader className='mx-auto mt-4' color={"#36D7B7"} loading={loading} size={30} />
       {errorElement}
       <div className="login-google">
         <p>

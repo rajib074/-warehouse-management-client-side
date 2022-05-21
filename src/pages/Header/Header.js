@@ -34,10 +34,13 @@ const Header = () => {
               </NavLink>
               {user ? (
                 <>
+                  <NavLink className="nav-link" to="/manage">
+                    Manage Item
+                  </NavLink>
                   <NavLink className="nav-link" to="/additem">
                     Add Item
                   </NavLink>
-                  <NavLink className="nav-link" to="/myitem">
+                  <NavLink className="nav-link" to="/my-item">
                     My Item
                   </NavLink>
                 </>

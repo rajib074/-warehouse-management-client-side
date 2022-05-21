@@ -35,7 +35,7 @@ const Manage = () => {
           {products.map((product, index) => {
             return (
               <>
-                <Col key={index} md={4}>
+                <Col key={product._id} md={4}>
                   <div className="product-aria">
                     <img src={product.img} alt="" />
                     <div>
